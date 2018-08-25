@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 
-#define LL_LEN 30
+#define LL_LEN 10
 
 using namespace std;
 
@@ -28,7 +28,7 @@ struct Linkedlist{
     printf("NULL\n" );
   }
   void push(int data){
-    Node *temp = new Node(data);
+    Node *temp = new Node(data);  // TODO: find what this line does.
     temp->ptr = head;
     head = temp;
   }
@@ -50,20 +50,41 @@ struct Linkedlist{
       current = next;
     }
     head = prev;
+  }
 
-// old:
-    // next = next->ptr;
-    // next = next->ptr;
-    // current = current->ptr;
-    // prev->ptr = NULL;
-    //
-    // while(current != NULL){
-    //   current->ptr = prev;
-    //   prev = current;
-    //   current = next;
-    //   next = next->ptr;
-    // }
-    // head = current;
+  void reverse(int m, int n){
+    int count = 1;
+    Node *prev, *current, *next, *f, *l;
+    f = l= prev=next=NULL;
+    current = head;
+    if(current == NULL || (m==n))
+      return;
+
+    while(current!=NULL){
+      if(count == m){
+        f=prev;
+        l=current;
+      }
+      if(count == n){
+        l->ptr = next;
+        if(f!=NULL){
+          f->ptr = current;
+        }
+        break;
+      }
+      else if(count >= m){
+        prev = current;
+        current = next;
+        next = current->ptr;
+        current->ptr = prev;
+      }
+      else{
+        prev = current;
+        current = current->ptr;
+        next = current->ptr;
+      }
+      count++;
+    }
   }
 };
 
@@ -73,45 +94,10 @@ int main() {
     ll.push(i);
   }
   ll.print();
-  ll.reverse();
+  //ll.reverse();
+  ll.reverse(3,10);
   ll.print();
+
 
   return 0;
 }
-
-// void print_ll(node* head){
-//   node* print;
-//   print = head;
-//   while (print != 0){
-//     cout << print->num << "->";
-//     print = print->ptr;
-//   }
-//   cout << "NULL" << endl;
-// }
-
-// node* build_ll(int len){
-//   node *head;
-//   // node nary[len];
-//   // head = nary;
-//   // for(int i=0; i<len;i++){
-//   //   if(i+1 == 4){
-//   //     nary[i].ptr = 0;
-//   //   }
-//   //   else{
-//   //     nary[i].ptr = &nary[i+1];
-//   //   }
-//   //   nary[i].num = i+1;
-//   // }
-//   node n1,n2,n3,n4;
-//   n1.ptr = &n2;
-//   n2.ptr = &n3;
-//   n3.ptr = &n4;
-//   n4.ptr = 0;
-//   n1.num = 1;
-//   n2.num = 2;
-//   n3.num = 3;
-//   n4.num = 4;
-//   head = &n1;
-//
-//   return head;
-// }
