@@ -37,16 +37,14 @@ struct Linkedlist{
     Node *next;
     Node *current;
     Node *prev;
-    prev = current = next = head;
+    current = head;
+    prev = next = NULL;
 
     if(current->ptr == NULL)
       return;
 
-    next = next->ptr;
-    prev->ptr = NULL;
-    current = next;
     while(current != NULL){
-      next = next->ptr;
+      next = current->ptr;
       current->ptr = prev;
       prev = current;
       current = next;
