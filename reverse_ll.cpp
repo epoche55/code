@@ -98,7 +98,7 @@ int main() {
   }
   ll.print();
   //ll.reverse();
-  ll.reverse(1,4);
+  ll.reverse(1,10);
   ll.print();
 
 
