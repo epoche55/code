@@ -35,12 +35,6 @@ public:
   bstNode* createBstNode(int num){
     return new bstNode(num);
   }
-  void printVertical(){
-    for(int i=0; i<=4 ; i++){
-      printTree(root, i, 0);
-      cout << endl;
-    }
-  }
   bool searchBst(bstNode* root, int num){
     if (root == NULL)
       return false;
@@ -50,6 +44,12 @@ public:
       return searchBst(root->left, num);
     else // search right
       return searchBst(root->right, num);
+  }
+  void printVertical(){
+    for(int i=0; i<=4 ; i++){
+      printTree(root, i, 0);
+      cout << endl;
+    }
   }
   void printTree(bstNode* root, int line_num, int horiz){
     if(root == NULL)

@@ -1,0 +1,32 @@
+Using variable a, give definitions for the following:
+○ An integer
+int a;
+
+○ A pointer to an integer
+int *a;
+
+○ A pointer to a pointer to an integer
+int **a;
+https://www.eskimo.com/~scs/cclass/int/sx8.html
+http://math.hws.edu/eck/cs124/javanotes2/c9/s2.html
+
+○ An array of 10 integers
+int a[10];
+
+○ An array of 10 pointers to integers
+int* a[10];
+
+○ A pointer to an array of 10 integers
+int **a;
+int ary[10];
+*a = ary;
+
+int *(a[10]);
+
+○ A pointer to a function that takes an integer as an argument and returns an
+integer
+int (*a)(int);
+
+○ An array of 10 pointers to functions that take an integer argument and return an
+integer
+int (*a[10])(int);
